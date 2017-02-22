@@ -1,0 +1,66 @@
+#python counter object
+
+from collections import *
+import os
+
+def get_counter():
+    '''get the Counter object'''
+    return Counter()
+
+def str_to_list(s):
+    '''
+    a string covert to list,
+    return an empty list if the string equal None
+    '''
+    if s != None:
+        return [x for x in s]
+    else:
+        return []
+
+def counter(c, l):
+    '''统计列表l中每个单词的出现次数，最后返回一个Counter对象'''
+    for word in l:
+        c[word] += 1
+    return c
+
+def get_file_str(path):
+    '''打开指定的文件，并且把文件中的内容以字符串的形式返回'''
+    if os.path.exists(path):
+        temp_str = ''
+        with open(path, 'r') as pf:
+            for line in pf:
+                temp_str += line
+            return temp_str
+    else:
+        print('the file [{}] is not exist!'.format(path))
+
+def test_str():
+    #使用自定义字符串测试
+    #统计自定义字符串中每个字符出现的次数
+    cnt = get_counter()
+    temp_str = 'hello,i\'m Hongten,welcome to my space!'
+    temp_list = str_to_list(temp_str)
+    cnt = counter(cnt, temp_list)
+    print(cnt)
+
+def test_file():
+    '''
+    读取一个文件，把文件中的内容转化为字符串
+    统计该字符串中每个字符串出现的次数
+    '''
+    cnt = get_counter()
+    temp_path = 'c:\\temp.txt'
+    temp_str = get_file_str(temp_path)
+    temp_list = str_to_list(temp_str)
+    cnt = counter(cnt, temp_list)
+    print(cnt)
+    
+def main():
+    test_str()
+    print('#' * 50)
+    test_file()
+
+if __name__ == '__main__':
+    main()
+《建设项目选址意见书》延期使用
+办理《建设项目选址意见书》
